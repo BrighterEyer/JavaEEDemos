@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory name="michael.cache.ehcache.hibernate">
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hib_ehcache</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">hello</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.show_sql">true</property>
+
+
+
+		<property name="connection.useUnicode">true</property>
+		<property name="connection.characterEncoding">UTF-8</property>
+		<property name="connection.SetBigStringTryClob">true</property>
+		<property name="connection.pool_size">10</property>
+		<property name="hibernate.jdbc.batch_size">10</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="hbm2ddl.auto">update</property>
+
+
+		<!-- hibernate4 <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property> -->
+
+		<!-- Hibernate 3.3 and higher -->
+		<!-- <property name="hibernate.cache.region.factory_class"> net.sf.ehcache.hibernate.EhCacheRegionFactory 
+			</property> <property name="hibernate.cache.region.factory_class"> net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory 
+			</property> -->
+		<!-- hibernate3.0-3.2 cache config -->
+		<!-- <property name="hibernate.cache.region.factory_class"> net.sf.ehcache.hibernate.EhCacheProvider 
+			</property> -->
+
+
+		<!-- Caused by: java.lang.ClassNotFoundException: org.hibernate.engine.jndi.JndiNameException -->
+		<!-- 开启二级缓存 -->
+		<property name="hibernate.cache.use_second_level_cache">
+			true
+		</property>
+		<!-- net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory -->
+		<!-- org.hibernate.cache.ehcache.EhCacheRegionFactory -->
+		<!-- 注册二级缓存区域工厂 -->
+		<property name="hibernate.cache.region.factory_class">
+			org.hibernate.cache.ehcache.EhCacheRegionFactory
+		</property>
+
+		<!-- 用于开启二级缓存的统计机制 -->
+		<property name="hibernate.generate_statistics">true</property>
+		<!-- 启用查询缓存 -->
+		<property name="hibernate.cache.use_query_cache">
+			true
+		</property>
+
+		<!-- 注解配置 -->
+		<mapping class="michael.cache.ehcache.hibernate.EhUserInfo" />
+		<mapping class="michael.cache.ehcache.hibernate.EhBlogTopic" />
+		<mapping class="michael.cache.ehcache.hibernate.EhBlogTopic2" />
+
+		<!-- 映射文件 -->
+		<mapping resource="michael/cache/ehcache/hibernate/EhBlogTopic3.hbm.xml" />
+
+		<!-- class-cache config -->
+		<class-cache class="michael.cache.ehcache.hibernate.EhBlogTopic"
+			usage="read-write" />
+	</session-factory>
+</hibernate-configuration>
+
+  
