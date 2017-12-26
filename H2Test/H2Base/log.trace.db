@@ -1,0 +1,9 @@
+2017-12-19 21:44:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "HTTP_LOG" already exists; SQL statement:
+CREATE TABLE HTTP_LOG(url VARCHAR(100),method varchar(100)) [42101-190]
+2017-12-19 21:46:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "HTTP_LOG" already exists; SQL statement:
+CREATE TABLE HTTP_LOG(url VARCHAR(100),method varchar(100)) [42101-190]
+2017-12-19 21:46:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "HTTP_LOG" already exists; SQL statement:
+CREATE TABLE HTTP_LOG(url VARCHAR(100),method varchar(100)) [42101-190]
