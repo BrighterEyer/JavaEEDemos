@@ -26,6 +26,14 @@ mvn jetty:run
 ```
 
 ```
+2个注意点
+filterChainDefinitions中
+资源 = 权限 #要同行
+dataSource换成mdataSource
+不然会报错shiroFilter不能创建的错
+```
+
+```
 用户名： admin1、admin2、admin3、admin4
 密码全部为：000000
 ```
