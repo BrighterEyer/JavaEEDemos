@@ -40,12 +40,9 @@
 			</value>
 		</property>
 	</bean>
-	<!--自定义filterChainDefinitionMap -->
-	<bean id="chainDefinitionSectionMetaSource" class="com.etop.shiro.ChainDefinitionSectionMetaSource" />
 
 	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
-
 
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -94,15 +91,6 @@
 		<property name="testConnectionOnCheckin" value="${jdbc.testConnectionOnCheckin}" />
 		<property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}" />
 	</bean>
-
-	<bean id="mdataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/shiro" />
-		<property name="username" value="root"></property>
-		<property name="password" value="hello"></property>
-	</bean>
-
 
 	<context:annotation-config />
 	<context:component-scan base-package="com.etop">

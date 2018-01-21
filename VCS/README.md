@@ -20,18 +20,13 @@ ls $(pwd)/src/main/resources/VCS.sql
 mysql -u root -p
 source <sql路径>
 
-#运行
-mvn package
-mvn jetty:run
-```
+#eclipse中
+VCS工程->鼠标右键->Run as->Maven clean->Maven install
+点击VCS->Alt+F5
+工程->鼠标右键->Run as->Run on Server
 
 ```
-2个注意点
-filterChainDefinitions中
-资源 = 权限 #要同行
-dataSource换成mdataSource
-不然会报错shiroFilter不能创建的错
-```
+
 
 ```
 用户名： admin1、admin2、admin3、admin4

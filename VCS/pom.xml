@@ -152,8 +152,6 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-		<!-- **************************** -->
-
 		<!-- hibernate验证 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -254,9 +252,6 @@
 			<artifactId>shiro-ehcache</artifactId>
 			<version>${shiroversion}</version>
 		</dependency>
-
-
-
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -307,20 +302,20 @@
 			<artifactId>maven-war-plugin</artifactId>
 			<version>2.6</version>
 		</dependency>
-
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
 			<artifactId>json-lib</artifactId>
 			<version>2.4</version>
+			<classifier>jdk15</classifier>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<finalName>VCS</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
+				<version>3.1</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
