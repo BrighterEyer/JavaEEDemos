@@ -1,0 +1,4 @@
+1.该项目是使用的Maven+SpringMVC+Hibernate+Mysql+easyUI+shiro
+2.该项目启动器是jetty
+3.run as 项目然后 输入 jetty:run  运行即可
+4.用户名： admin1 admin2 admin3 admin4 密码全部是：000000
