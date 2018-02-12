@@ -155,5 +155,4 @@ public class UserController extends BaseController {
 		// 写给浏览器
 		ImageIO.write(bufferedImage, "JPEG", response.getOutputStream());
 	}
-
 }
