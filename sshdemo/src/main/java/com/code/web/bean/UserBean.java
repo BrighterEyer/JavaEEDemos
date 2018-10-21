@@ -31,8 +31,7 @@ public class UserBean {
     }
 
     public String verify() {
-        if (!name.equals("justin") ||
-                !password.equals("123456")) {
+        if (!name.equals("justin") || !password.equals("123456")) {
             errMessage = "名称或密码错误";
             return "failure";
         } else {

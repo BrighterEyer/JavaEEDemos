@@ -16,6 +16,7 @@ import com.code.web.service.ProductService;
 public class ProductAction extends ActionSupport {
 
     private static final long serialVersionUID = 1L;
+
     @Autowired
     private ProductService productService;
     private String pname;
@@ -23,7 +24,6 @@ public class ProductAction extends ActionSupport {
 
     /**
      * 保存商品操作
-     *
      * @return
      */
     public String saveProduct() {
@@ -47,7 +47,6 @@ public class ProductAction extends ActionSupport {
 
     public void setPrice(double price) {
         this.price = price;
-
     }
 
     @Override

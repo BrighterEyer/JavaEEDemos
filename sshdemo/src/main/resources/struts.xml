@@ -23,6 +23,13 @@
         </action>
     </package>
 
+    <package name="login" extends="struts-default">
+        <action name="login" class="login_action">
+            <result name="success">WEB-INF/view/welcome.jsp</result>
+            <result name="error">WEB-INF/view/error.jsp</result>
+        </action>
+    </package>
+
     <!-- 引入资源文件 -->
     <constant name="struts.custom.i18n.resources" value="messageResource"></constant>
 

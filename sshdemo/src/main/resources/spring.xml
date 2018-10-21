@@ -28,19 +28,24 @@
     </bean>
 
     <!-- 配置Hibernate的SessionFactory -->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <!-- 注入连接池 -->
+    <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
+        <!--&lt;!&ndash; 注入连接池 &ndash;&gt;-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--&lt;!&ndash; 配置Hibernate属性 &ndash;&gt;-->
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.show_sql">true</prop>&lt;!&ndash; 是否展示SQL &ndash;&gt;-->
+                <!--<prop key="hibernate.hbm2ddl.auto">update</prop>&lt;!&ndash; 是否自动创建表结构 &ndash;&gt;-->
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+        <!--&lt;!&ndash; 扫描并加载注解过的实体类 &ndash;&gt;-->
+        <!--<property name="packagesToScan" value="com.code.web.model"/>-->
+    <!--</bean>-->
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!-- 配置Hibernate属性 -->
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.show_sql">true</prop><!-- 是否展示SQL -->
-                <prop key="hibernate.hbm2ddl.auto">update</prop><!-- 是否自动创建表结构 -->
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
-            </props>
-        </property>
-        <!-- 扫描并加载注解过的实体类 -->
-        <property name="packagesToScan" value="com.code.web.model"/>
+        <property name="configLocations" value="classpath:hibernate.cfg.xml"/>
     </bean>
 
     <!-- 配置事务管理器 -->
@@ -48,6 +53,9 @@
         <!-- 注入SessionFactory -->
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <!-- 配置事务二 开启事务注解 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!-- 配置事务增强 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
@@ -72,5 +80,7 @@
         <!-- 适配切入点和事务增强 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
     </aop:config>
+
+    <import resource="spring-actions.xml"/>
 
 </beans>
