@@ -14,5 +14,7 @@ public interface IUserService {
      */
     public User login(String userCode,String password) throws Exception;
 
-    User register(String userCode, String userPassword);
+    int register(String userCode, String userPassword);
+
+    public User findByUserCode(String userCode) throws Exception;
 }

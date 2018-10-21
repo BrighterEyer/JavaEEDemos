@@ -2,6 +2,7 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- spring 使用 mapperLocations 后无需配置此文件 -->
 <configuration>
     <settings>
         <!-- changes from the defaults -->
@@ -10,7 +11,7 @@
 
     <typeAliases>
         <!--这里给实体类取别名，方便在mapper配置文件中使用-->
-        <package  name="com.code.web.pojo"/>
+        <package name="com.code.web.pojo"/>
         <!--<typeAlias alias="User" type="com.code.web.pojo.User"/>-->
     </typeAliases>
 

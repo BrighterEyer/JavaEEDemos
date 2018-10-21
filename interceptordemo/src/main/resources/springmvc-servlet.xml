@@ -65,6 +65,8 @@
     <!-- 配置拦截器interceptors -->
     <mvc:interceptors>
         <mvc:interceptor>
+            <mvc:mapping path="/"/>
+            <mvc:mapping path="/**"/>
             <mvc:mapping path="/login/sys/**"/>
             <bean class="com.code.web.interceptor.SysInterceptor"/>
         </mvc:interceptor>

@@ -17,7 +17,7 @@
     <%
         User u = (User)session.getAttribute(Constants.USER_SESSION);
     %>
-    <%=u.getUserPassword()%>
+    你好!<%=u.getUserCode()%>
 </center>
 </body>
 </html>

@@ -21,18 +21,24 @@ public class UserServiceImpl implements IUserService {
         //匹配密码
         if (null != user) {
             if (!user.getUserPassword().equals(userPassword)) {
-                user = null;
+                user = new User();
+                user.setUserCode(userCode);
             }
         }
         return user;
     }
 
     @Override
-    public User register(String userCode, String userPassword) {
+    public int register(String userCode, String userPassword) {
         User user = new User();
         user.setUserCode(userCode);
         user.setUserPassword(userPassword);
         return userMapper.add(user);
+    }
+
+    @Override
+    public User findByUserCode(String userCode) throws Exception {
+        return userMapper.getUserByUserCode(userCode);
     }
 
 }

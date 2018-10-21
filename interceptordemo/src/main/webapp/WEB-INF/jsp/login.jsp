@@ -10,10 +10,21 @@
 </head>
 <body>
 <center>
+    <div style="">${requestScope.passwordStatus}</div>
     <form action="user/dologin.html" method="post">
-        <span>用户名：</span><input type="text" name="userCode"/><br>
-        <span>密码:</span><input type="password" name="userPassword"/>
-        <input type="submit" value="提交"/>
+        <table>
+            <tr>
+                <td>用户名：</td>
+                <td><input type="text" name="userCode"/></td>
+            </tr>
+            <tr>
+                <td>密码:</td>
+                <td><input type="password" name="userPassword"/></td>
+            </tr>
+            <tr colspan="2">
+                <td><input type="submit" value="提交"/></td>
+            </tr>
+        </table>
     </form>
 </center>
 </body>

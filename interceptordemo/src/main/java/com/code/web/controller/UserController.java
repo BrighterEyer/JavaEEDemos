@@ -21,8 +21,13 @@ public class UserController {
     private IUserService iUserService;
 
     @RequestMapping(value = "login.html")
-    public String login() {
-        return "login";
+    public String login(HttpServletRequest request, HttpSession session) {
+        User user = (User)session.getAttribute(Constants.USER_SESSION);
+        if(user!=null){
+            return "frame";
+        }else{
+            return "login";
+        }
     }
 
     @RequestMapping(value = "logout.html")
@@ -35,6 +40,10 @@ public class UserController {
     public String doLogin(@RequestParam String userCode, @RequestParam String userPassword, HttpServletRequest request, HttpSession session) throws Exception {
         User user = iUserService.login(userCode, userPassword);
         if (null != user) {
+            if(user.getUserPassword() == null) {
+                request.setAttribute("passwordStatus", "密码错误");
+                return "login";
+            }
             session.setAttribute(Constants.USER_SESSION, user);
             return "redirect:sys/main.html";
         }
@@ -45,12 +54,13 @@ public class UserController {
 
     @RequestMapping(value = "doRegister.html", method = RequestMethod.POST)
     public String doRegister(@RequestParam String userCode, @RequestParam String userPassword, HttpServletRequest request, HttpSession session) throws Exception {
-        User user = iUserService.register(userCode, userPassword);
+        int effect = iUserService.register(userCode, userPassword);
+        User user = iUserService.findByUserCode(userCode);
         if (null != user) {
             session.setAttribute(Constants.USER_SESSION, user);
             return "redirect:sys/main.html";
         }
-        return "forward:401";
+        return "401";
     }
 
     @RequestMapping(value = "sys/main.html")

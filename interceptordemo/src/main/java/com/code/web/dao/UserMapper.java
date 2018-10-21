@@ -14,5 +14,5 @@ public interface UserMapper {
      */
     public User getUserByUserCode(@Param("userCode") String userCode) throws Exception;
 
-    public User add(@Param("user") User user);
+    public int add(@Param("user") User user);
 }
