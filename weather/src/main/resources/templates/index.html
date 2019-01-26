@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+</head>
+<body>
+
+<div id="ipDiv">hello world</div>
+
+<div id="location">位置</div>
+
+</body>
+<script type="text/javascript" th:src="@{lib/jquery.min.js}"></script>
+<script th:inline="javascript">
+    var contextPath =[[${#request.getContextPath()}]];
+</script>
+
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+    $("#ipDiv").html(returnCitySN["cip"]+','+returnCitySN["cname"])
+</script>
+<script>
+    $.ajax({
+        url: contextPath + "/getData",
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        data: {
+            ip:returnCitySN["cip"]
+        },
+        complete: function (XHR, TS) {
+            var returnObj = eval('(' + XHR.responseText + ')');
+            if (returnObj.code == 200) {
+                console.log(returnObj.data.weatherData);
+            }
+        }
+    });
+    $.ajax({
+        url: contextPath + "/getLocation",
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        data: {
+            ip:returnCitySN["cip"]
+        },
+        complete: function (XHR, TS) {
+            try{
+                var returnObj = eval('('+XHR.responseText+')');
+                if(returnObj.code == 200){
+                    $("#location").html(returnObj.data.city);
+                }
+            }catch (e) {
+
+            }
+        }
+    });
+    // $.ajax({
+    //     type:"GET",
+    //     url: contextPath+"/getCityJson",
+    //     dataType:"jsonp",  //数据格式设置为jsonp
+    //     jsonp:"callback",  //Jquery生成验证参数的名称
+    //     success:function(data){  //成功的回调函数
+    //         console.log(data)
+    //     },
+    //     error: function (e) {
+    //         console.log(e)
+    //     }
+    // });
+</script>
+
+</html>
