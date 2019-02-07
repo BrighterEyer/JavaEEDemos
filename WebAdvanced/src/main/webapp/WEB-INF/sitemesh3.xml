@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+	<mapping path="/*" decorator="/WEB-INF/pages/decorator.jsp" />
+
+	<mapping path="/one*" exclue="true" />
+	<mapping path="/two*" exclue="true" />
+	<mapping path="/three*" exclue="true" />
+	<mapping path="/four*" exclue="true" />
+	<mapping path="/user*" exclue="true" />
+	<mapping path="/six*" exclue="true" />
+	<mapping path="/seven*" exclue="true" />
+
+	<content-processor>
+		<tag-rule-bundle class="com.cmower.common.tagrules.SidekeyTagRuleBundle" />
+	</content-processor>
+</sitemesh>
